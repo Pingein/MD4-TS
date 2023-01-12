@@ -292,7 +292,7 @@ function insertCharacter(str:string,char:string):string {
     while (str.length) {
         new_str += str.slice(0,3)
         str = str.slice(3)
-        str.length ? new_str += char : new_str
+        str.length ? new_str += char : 0
     }
     return new_str.split('').reverse().join('')
 }
@@ -546,8 +546,8 @@ Return an object that contains properties with keys representing first letters
 The values should be arrays of strings containing only the corresponding strings
 For example, the array ['Alf', 'Alice', 'Ben'] should be transformed to
 { a: ['Alf', 'Alice'], b: ['Ben']} */
-function groupAlphabetically(arr:string[]) {
-    let obj:{[key:string]:any[]} = {}
+function groupAlphabetically(arr:string[]):{[key:string]:string[]} {
+    let obj:{[key:string]:string[]} = {}
     arr.forEach(word => obj[(word[0].toLowerCase())] = [])
     arr.forEach(word => obj[(word[0].toLowerCase())].push(word))
     return obj
@@ -915,9 +915,9 @@ console.log(joinObjects({a:1,b:2},{c:3,d:4,e:5,f:6})) //Expected {a:1,b:2,c:3,d:
 /* Write a function that takes an object and a string as parameters 
 and return an object which contains properties from the given object
 and a new property favoriteMovie with the value equal to the given string */
-function addFavmovieToObj(person:{[key:string]:any},movie:string):{[key:string]:any} {
+function addFavMovieToObj(person:{[key:string]:any},movie:string):{[key:string]:any} {
     return {...person, 'favoriteMovie':movie}
 }
-console.log('addFavmovieToObj() results:')
-console.log(addFavmovieToObj({eyeColor: 'green', age: 10 }, 'Garfield') ) //Expected { eyeColor: 'green', age: 10, favoriteMovie:  'Garfield' }
-console.log(addFavmovieToObj({eyeColor: 'blue', age: 15 }, 'Twilight') ) //Expected { eyeColor: 'blue', age: 15, favoriteMovie:  'Twilight' }
+console.log('addFavMovieToObj() results:')
+console.log(addFavMovieToObj({eyeColor: 'green', age: 10 }, 'Garfield') ) //Expected { eyeColor: 'green', age: 10, favoriteMovie:  'Garfield' }
+console.log(addFavMovieToObj({eyeColor: 'blue', age: 15 }, 'Twilight') ) //Expected { eyeColor: 'blue', age: 15, favoriteMovie:  'Twilight' }
